@@ -74,7 +74,8 @@ export default function ResumeUploader({ onUploadSuccess }) {
             const userId = user?.id || 'anonymous';
 
             // 1. Upload Resume
-            const uploadRes = await fetch('http://localhost:5000/api/resume/upload', {
+            const apiUrl = import.meta.env.VITE_BACKEND_URL;
+            const uploadRes = await fetch(`${apiUrl}/api/resume/upload`, {
                 method: 'POST',
                 headers: {
                     'x-user-id': userId
@@ -90,7 +91,7 @@ export default function ResumeUploader({ onUploadSuccess }) {
             const uploadData = await uploadRes.json();
 
             // 2. Analyze Resume
-            const analyzeRes = await fetch(`http://localhost:5000/api/resume/analyze/${uploadData.resumeId}`, {
+            const analyzeRes = await fetch(`${apiUrl}/api/resume/analyze/${uploadData.resumeId}`, {
                 method: 'POST',
                 headers: {
                     'x-user-id': userId,

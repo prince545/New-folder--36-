@@ -23,7 +23,8 @@ export default function DashboardPage() {
                 };
                 if (token) headers.Authorization = `Bearer ${token}`;
 
-                const res = await fetch("http://localhost:5000/api/resume/all", { headers });
+                const apiUrl = import.meta.env.VITE_BACKEND_URL;
+                const res = await fetch(`${apiUrl}/api/resume/all`, { headers });
                 if (!res.ok) throw new Error("Failed to fetch history");
 
                 const resumes = await res.json();

@@ -26,7 +26,8 @@ const incrementMetric = (field) => {
     }
 };
 
-const API = 'http://localhost:5000/api/resume';
+const apiUrl = import.meta.env.VITE_BACKEND_URL;
+const API = `${apiUrl}/api/resume`;
 
 const EMPTY_FORM = {
     name: '', email: '', phone: '', location: '', linkedin: '',

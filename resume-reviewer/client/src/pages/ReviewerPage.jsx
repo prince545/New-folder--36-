@@ -33,7 +33,8 @@ export default function ReviewerPage() {
             const formData = new FormData();
             formData.append("resume", file);
 
-            const uploadRes = await fetch("http://localhost:5000/api/resume/upload", {
+            const apiUrl = import.meta.env.VITE_BACKEND_URL;
+            const uploadRes = await fetch(`${apiUrl}/api/resume/upload`, {
                 method: "POST",
                 headers, // Do NOT set Content-Type for FormData, browser does it automatically with boundary
                 body: formData,
@@ -43,7 +44,7 @@ export default function ReviewerPage() {
             const { resumeId } = await uploadRes.json();
 
             // 2. Analyze File against Job Description
-            const analyzeRes = await fetch(`http://localhost:5000/api/resume/analyze/${resumeId}`, {
+            const analyzeRes = await fetch(`${apiUrl}/api/resume/analyze/${resumeId}`, {
                 method: "POST",
                 headers: {
                     ...headers,

@@ -36,7 +36,8 @@ export default function HistoryPage() {
             if (!userId) return;
             try {
                 const token = await getToken();
-                const res = await fetch("http://localhost:5000/api/resume/all", {
+                const apiUrl = import.meta.env.VITE_BACKEND_URL;
+                const res = await fetch(`${apiUrl}/api/resume/all`, {
                     headers: {
                         "x-user-id": userId,
                         ...(token ? { Authorization: `Bearer ${token}` } : {})
@@ -97,7 +98,8 @@ export default function HistoryPage() {
             const token = await getToken();
             // Note: Endpoint doesn't explicitly exist in user's prompt but usually /api/resume/:id exists.
             // If it fails, that's fine, we catch it.
-            const res = await fetch(`http://localhost:5000/api/resume/${itemToDelete}`, {
+            const apiUrl = import.meta.env.VITE_BACKEND_URL;
+            const res = await fetch(`${apiUrl}/api/resume/${itemToDelete}`, {
                 method: "DELETE",
                 headers: {
                     "x-user-id": userId,
