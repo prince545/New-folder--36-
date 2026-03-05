@@ -1,0 +1,4 @@
+Error: Failed to analyze resume with AI.
+    at requestResumeAnalysis (file:///C:/New%20folder/New%20folder%20(36)/resume-reviewer/server/utils/gemini.js:117:23)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async analyzeResume (file:///C:/New%20folder/New%20folder%20(36)/resume-reviewer/server/controllers/resumeController.js:55:26)
